@@ -171,7 +171,10 @@ async function canvas_to_fourier_series() {
  *  play the sound wave corresponding to the spectrum `ft`.
  */
 function fourier_series_to_sound(ft) {
-    if (navigator.userAgent.indexOf("AppleWebKit") != -1) {
+    // front end is hell
+    // https://stackoverflow.com/questions/7944460/detect-safari-browser
+    let isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari) {
         AudioContext = webkitAudioContext;
     }
     try {
